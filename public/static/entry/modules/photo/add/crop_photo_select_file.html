@@ -1,0 +1,20 @@
+<div><!-- choose file -->
+	<div>
+		<div class="form-group row">
+		    <div class="col-sm-12">
+		      <div style="float:left;">Select File:&nbsp;&nbsp; </div><input type="file" ng-file-select="onFileSelect($files)" />
+		    </div>
+		</div>
+	</div>
+	<br>
+	<div ng-show="imageOperation">
+		<div id="operationArea" style="height:80px;">
+			<div id="cropImageBtn">
+				<button title="init crop panel" type="button" class="btn btn-default" ng-click="initCropFun()">
+				  Start to Crop Image
+				</button>
+			</div>
+		</div>
+	</div>
+</div>		
+

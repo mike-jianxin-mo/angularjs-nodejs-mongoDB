@@ -1,0 +1,57 @@
+<script type="text/ng-template"  id="/photo-list.html">
+	<div class="row">
+	  <!-- /.col-lg-6 
+	     <label for="inputName" class="col-md-2 control-label" >Search:</label>
+	     <div class="col-md-6">
+	     	<input type="text" class="form-control" ng-model="query">
+	     </div>-->
+		 <div class="col-md-4">
+			<button title="a new photo" type="button" class="btn btn-default" ng-click="addForm()">
+		  		<span class="glyphicon glyphicon-plus"></span>Add
+			</button>
+		 </div>
+	</div><!-- /.row -->
+	<div class="space-line"></div>
+	<div id="list-area" class="row list-area photo-list">
+	  <div class="col-sm-6 col-md-4" ng-repeat="photo in photos | filter:query">
+		<div class="thumbnail">
+		  <img ng-src="{{photo.thumbnail_url}}" alt="...">
+		  <div class="caption">
+			<h4>ID:{{photo.id}}</h4>
+			<h4>{{photo.state}}</h4>
+			<div class="btn-group">
+			  <button title="Show Default" class="btn btn-default-photo" ng-if="photo.is_default"> Default Photo</button>
+			  <button title="Set Default Photo" type="button" class="btn btn-default" ng-if="!photo.is_default" ng-click="setDefault(photo)"> Set Default </button>
+			  <button title="Delete" type="button" class="btn btn-default" ng-click="delete(photo)"> Delete </button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+</script>
+
+<!-- main -->
+<div id="photo-management">
+	<H3>Product ID: {{product.id}}   Name: {{product.name}}</H3>
+	<div>
+  		<ng-include src="crudView"></ng-include>
+	</div>
+	<div ui-view></div>
+	<div my-dialog></div>
+</div>
+
+
+<script type="text/ng-template" id="setDefaultNotice.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Set Default Image Notice</h3>
+    </div>
+    <div class="modal-body">
+    	{{info}}
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+
+

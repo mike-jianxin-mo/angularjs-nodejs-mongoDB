@@ -1,0 +1,17 @@
+<div><!-- choose file -->
+	<div ng-show="imageOperation">
+		<div id="operationArea" style="height:80px;">
+			<!-- display none/block! -->
+			<div id="cropOperateBtn" style="display:none">
+				<button title="Recrop photo" type="button" class="btn btn-default" ng-click="cancelCrop()" ng-show="!showOriginImage">
+					ReCorp Image
+				</button>
+				<button title="Back to photo list" type="button" class="btn btn-default" ng-click="backToList()">
+					Back to List
+				</button>
+			</div>
+		</div>
+		<div id="cropResult" ng-show="!showOriginImage">
+		</div>
+	</div>
+</div>		

@@ -1,0 +1,41 @@
+<div id="notice" class="row top-notice">
+  <div class="container notice-info">Database will be reset very 10 minutes! </div>
+</div>
+<div id="top" class="row top-header">
+  <div class="container">
+    <div class="text-right top-info" >Hi {{userName}}  , &nbsp; &nbsp;<a href="#" ng-click="logout()">Logout</a></div>
+  </div>
+</div>
+<div class="container"> <!-- body -->
+  <div></div>
+  <div id="left-side" class="col-md-3 left-block">  <!-- menu area -->
+
+    <div class="sidebar-offcanvas" id="sidebar" role="navigation">
+      <p class="visible-xs">
+        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">
+          <i class="glyphicon glyphicon-chevron-left"></i></button>
+      </p>
+      <div class="well sidebar-nav">
+        <ul class="nav">
+            <li ng-class="currentMenu('site')"><a ui-sref=".site" >Site Management</a></li>
+            <li ng-class="currentMenu('section')"><a ui-sref=".section">Content Management</a></li>
+            <li ng-class="currentMenu('product')"><a ui-sref=".product.list">Product Management</a></li>
+            <li ng-class="currentMenu('photo')"><a ui-sref="admin.photo">Photo Management</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="right-side" class="col-md-9">
+    <div class="row block-left-space">
+      <div class="block-bottom-line block-bottom-space">
+        <h1>{{operationTitle}}</h1>
+      </div>
+      <div ui-view class="main-block"></div>
+    </div>
+  </div>
+</div>
+<div id="footer" class="container block-top-space">
+    <div class="text-right block-top-line dev-info">
+      Developer: Mike Mo, Email: cartooncatfish@gmail.com
+    </div>
+</div>

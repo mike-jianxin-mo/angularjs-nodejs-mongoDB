@@ -1,0 +1,58 @@
+<script type="text/ng-template" id="/section-list.html">
+
+	<div class="row data-contain">
+	  <div class="col-sm-11 col-md-11" ng-repeat="section in sections.vo | filter:query" >
+	  	<div class="item-label">Title:</div>
+	  	<div class="item-content line-item-content">{{section.name}}</div>
+	  	<!--
+	  	<div ng-bind-html="trustContent(section.content)"></div>
+	  	-->
+	  	<div class="item-label">Content:</div>
+	  	<div  class="item-content" ng-bind-html="section.content"></div>
+	  	<div>
+	  		<button ng-click="showForm(section)" type="button" class="btn btn-default" >Edit</button>
+	  		<!-- <button ng-click="delete()" type="button" class="btn btn-default" >Detlete</button> -->
+	  	</div>
+	  </div>
+	</div>
+
+</script>
+
+<script type="text/ng-template" id="section-form.html">
+
+    <div class="modal-header">
+        <h3 class="modal-title">Set Default Image Notice</h3>
+    </div>
+    <div class="modal-body">
+		<div id="content-management">
+			<div class="row item-seperate-bottom">
+			  <div class="form-group">
+			    <label class="col-md-1 control-label">Name:</label>
+			    <div class="col-sm-11 col-lg-11">
+			      <input type="text" class="form-control" id="name" name="name" placeholder="Section Name" ng-model="editSection.name" />
+			    </div>
+			  </div>
+			</div>
+			<div class="row">
+				<label class="col-md-1 control-label  item-seperate-bottom">Content:</label>
+			    <div class="col-sm-12">
+			      <textarea class="ckeditor" ck-editor cols="30" id="editor1" name="editor1" rows="10" ng-model="editSection.content">
+			      </textarea>
+			    </div>
+			</div>
+		</div>
+	</div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="update()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+
+
+</script>
+
+<!-- main -->
+<div id="section-management">
+  <div>
+  	<ng-include src="crudView"></ng-include>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div id="list-area" class="row list-area" >
+	<ul ui-sortable="sortableOptions"  id="sortable" style="list-style: none; " ng-model="products.vo">
+	  <li class="col-sm-6 col-md-4" id="list-item" ng-repeat="product in products.vo | filter:query" >
+		<div class="thumbnail">
+		  <img ng-src="{{product.thumb_photo}}" alt="...">
+		  <div class="caption">
+			<div class="row">
+				<dl class="dl-horizontal" >
+				  <dt>Name:</dt> <dd>{{product.name}}</dd>
+				  <dt>Code:</dt> <dd>{{product.code}}</dd>
+				  <dt>Form:</dt> <dd>{{product.form}}</dd>
+				  <dt>Category:</dt> <dd>{{product.category}}</dd>
+				</dl>
+			</div>
+			<div class="btn-group">
+			  <button title="Show Details" type="button" class="btn btn-default" ng-click="show(product)"> <span class="glyphicon glyphicon-edit"></span></button>
+			  <button title="Delete" type="button" class="btn btn-default" ng-click="delete(product)"><span class="glyphicon glyphicon-ban-circle"></span></button>
+			  <button title="Photo Management" type="button" class="btn btn-default" ng-click="photoManage(product)"><span class="glyphicon glyphicon-camera"></span></button>
+			</div>
+		  </div>
+		</div>
+	  </li>
+	</ul>
+</div>
+
+<div>
+	<table class="table">
+		<thead>
+		  <tr>
+		  	<th>Select</th>
+		  	<th>Default Image</th>
+		    <th>Product Name</th>
+		    <th>Form</th>
+		    <th>Category</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr ng-repeat="product in products.vo">
+		  	<td><input type="radio" value="{{product.id}}" ng-click="selectProduct(product)"></td>
+		  	<td><img ng-src="{{product.thumb_photo}}"></td>
+		    <td>{{product.name}}</td>
+		    <td>{{product.form}}</td>
+		    <td>{{product.category}}</td>
+		  </tr>
+		</tbody>
+	</table>
+</div>

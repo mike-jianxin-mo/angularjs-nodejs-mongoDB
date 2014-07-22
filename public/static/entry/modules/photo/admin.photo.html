@@ -1,0 +1,102 @@
+<script type="text/ng-template"  id="/photo-list.html">
+	<div class="row">
+	  <!-- /.col-lg-6 
+	     <label for="inputName" class="col-md-2 control-label" >Search:</label>
+	     <div class="col-md-6">
+	     	<input type="text" class="form-control" ng-model="query">
+	     </div>-->
+		 <div class="col-md-4">
+			<button title="a new photo" type="button" class="btn btn-default" ng-click="addForm()">
+		  		<span class="glyphicon glyphicon-plus"></span>Add
+			</button>
+		 </div>
+	</div><!-- /.row -->
+	<div class="space-line"></div>
+	<div id="list-area" class="row list-area photo-list">
+	  <div class="col-sm-6 col-md-4" ng-repeat="photo in photos | filter:query">
+		<div class="thumbnail">
+		  <img ng-src="{{photo.thumbnail_url}}" alt="...">
+		  <div class="caption">
+			<h3>ID:{{photo.id}}</h3>
+			<h3>{{photo.state}}</h3>
+			<div class="btn-group">
+			  <button title="Delete" type="button" class="btn btn-default" ng-click="delete(photo)"><span class="glyphicon glyphicon-ban-circle"></span></button>
+			  <!-- <input type="checkbox" ng-bind="setDefault(photo)">Set Default</input> -->
+			  <input type="checkbox" ng-model="photo.is_default" ng-click="setDefault(photo)">Set Default</input>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+</script>
+
+<!-- main -->
+<div id="photo-management">
+	<H3>Product {{product.name}}'s photos:</H3>
+	<div>
+  		<ng-include src="crudView"></ng-include>
+	</div>
+	<div ui-view></div>
+	<div my-dialog></div>
+</div>
+
+
+<script type="text/ng-template" id="setDefaultNotice.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Set Default Image Notice</h3>
+    </div>
+    <div class="modal-body">
+    	{{info}}
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+
+
+
+<script type="text/ng-template" id="/photo-show.html">
+/*
+	<div ng-if="editOrAddForm()">
+		<form class="form-horizontal">
+		  <div class="form-group">
+		    <label for="inputName" class="col-sm-2 control-label">ID:{{photo.id}}</label>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="inputName" class="col-sm-2 control-label">Name</label>
+		    <div class="col-sm-10 col-lg-4">
+		      <input type="text" class="form-control" id="name" name="name" placeholder="photo name" ng-model="photo.name" />
+		    </div>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="inputDescription" class="col-sm-2 control-label">Description</label>
+		    <div class="col-sm-10 col-lg-4">
+		      <input type="text-area" class="form-control  " id="input" placeholder="Hot, Sexy photo!"  ng-model="photo.describe">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputEmail" class="col-sm-2 control-label">State</label>
+		    <div class="col-sm-10 col-lg-4">
+		      <input type="text" class="form-control   " id="" name="" placeholder="state"  ng-model="photo.state">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+				<button title="Save photo" type="button" class="btn btn-default" ng-click="addPhoto()">
+				  <span class="glyphicon glyphicon-plus"></span> Save
+				</button>
+				<button title="Update photo information" type="button" class="btn btn-default" ng-click="updatePhoto()">
+				  <span class="glyphicon glyphicon-plus"></span> Update
+				</button>
+				<button title="Back to photo list" type="button" class="btn btn-default" ng-click="backToList()">
+				  <span class="glyphicon glyphicon-plus"></span> Back To List
+				</button>
+		    </div>
+		  </div>
+		</form>
+	</div>
+*/
+</script>

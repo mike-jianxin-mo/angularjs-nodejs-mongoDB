@@ -1,0 +1,51 @@
+
+<!-- top nav button -->
+<script type="text/ng-template" id="/content-top-btn.html">
+	<div></div>
+</script>
+
+<!-- main -->
+<div id="content-management">
+	<div>
+		<div class="row">
+		    <div class="col-sm-12">
+		      <textarea class="ckeditor" ck-editor cols="80" id="editor1" name="editor1" rows="10" ng-model="content.vo.content">
+		      </textarea>
+		    </div>
+		</div>
+		<div class="row">
+		    <div class="col-sm-12">
+				<button title="Back to content list" type="button" class="btn btn-default" ng-click="update()">
+				  <span class="glyphicon glyphicon-plus"></span> Submit
+				</button>
+		    </div>
+		</div>
+	</div>
+</div>
+
+<div ng-if="actType==4">
+	<dl class="dl-horizontal" >
+	  <dt>Name:</dt>
+	  <dd>{{girl.name}}</dd>
+	  <dt>Age:</dt>
+	  <dd>{{girl.age}}</dd>
+	  <dt>From:</dt>
+	  <dd>{{girl.fromArea}}</dd>
+	  <dt>Special:</dt>
+	  <dd>{{girl.advSpecial}}</dd>
+	  <dt>Description:</dt>
+	  <dd>{{girl.info}}</dd>
+	  <dt>Email:</dt>
+	  <dd>{{girl.email}}</dd>
+	</dl>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button title="Edit girl information" type="button" class="btn btn-default" ng-click="editForm(girl)">
+			  <span class="glyphicon glyphicon-plus"></span> Edit
+			</button>
+			<button title="Back to girl list" type="button" class="btn btn-default" ng-click="backToList()">
+			  <span class="glyphicon glyphicon-plus"></span> Back to List
+			</button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,90 @@
+<!-- main site create/edit form -->
+<script type="text/ng-template" id="site-form.html">
+  <div class="rev-bootstrap" >
+	  <div class="block-bottom-line block-title">
+	  	<h3>Edit Site Information</h3>
+	  </div>
+    	<form class="form-horizontal">
+		  <div class="form-group">
+		    <label for="inputName" class="col-md-2 control-label">Site Name</label>
+		    <div class="col-sm-9 col-lg-9">
+		      <input type="text" class="form-control" id="name" name="name" placeholder="Site Name" ng-model="site.vo.name" />
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputContact" class="col-md-2 control-label">Contact Person</label>
+		    <div class="col-md-9">
+		      <input type="text" class="form-control" placeholder="Contact Person Name" ng-model="site.vo.contact_person">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputPhone" class="col-md-2 control-label">Phone</label>
+		    <div class="col-md-9">
+		      <input type="text" class="form-control" placeholder="Contact Phone Number" ng-model="site.vo.phone">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputEmail" class="col-md-2 control-label">Email</label>
+		    <div class="col-md-9">
+		      <input type="text" class="form-control" placeholder="Email"  ng-model="site.vo.email">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputAddress" class="col-md-2 control-label">Address</label>
+		    <div class="col-md-9">
+		      <input type="text" class="form-control" placeholder="Address"  ng-model="site.vo.address">
+		    </div>
+		  </div>  
+		  <div class="form-group">
+		    <label for="inputLng" class="col-md-2 control-label">longitude</label>
+		    <div class="col-md-9">
+		      <input type="text" class="form-control" placeholder="Longitude" ng-model="site.vo.lon">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputLat" class="col-md-2 control-label">latitude</label>
+		    <div class="col-md-9">
+		      <input type="text" class="form-control" placeholder="Latitude" ng-model="site.vo.lat">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+				<button title="Back to site list" type="button" class="btn btn-default" ng-click="update()">
+				  <span class="glyphicon glyphicon-plus"></span> Submit
+				</button>
+				<button title="Back to site list" type="button" class="btn btn-default" ng-click="cancel()">
+				  <span class="glyphicon glyphicon-plus"></span> Cancel
+				</button>
+		    </div>
+		  </div>
+		</form>
+  </div>
+</script> 
+
+<script type="text/ng-template" id="/site-show.html">
+	<div class="row">
+		<dl class="dl-horizontal" >
+		  <dt>Site Name:</dt> <dd>{{site.vo.name}}</dd>
+		  <dt>Contact Person:</dt> <dd>{{site.vo.contact_person}}</dd>
+		  <dt>Phone:</dt> <dd>{{site.vo.phone}}</dd>
+		  <dt>Email:</dt> <dd>{{site.vo.email}}</dd>
+		  <dt>Address:</dt> <dd>{{site.vo.address}}</dd>
+		  <dt>Longitude:</dt> <dd>{{site.vo.lat}}</dd>
+		  <dt>Latitude:</dt> <dd>{{site.vo.lon}}</dd>
+		</dl>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button title="Edit site information" type="button" class="btn btn-default" ng-click="showForm(site)">
+				  <span class="glyphicon glyphicon-plus"></span> Edit
+				</button>
+			</div>
+		</div>
+	</div>
+</script>
+
+<!-- main -->
+<div id="site-management">
+  <div>
+  	<ng-include src="crudView"></ng-include>
+  </div>
+</div>
