@@ -183,10 +183,24 @@ module.exports = function(app, passport) {
 			productInfo.category = req.body.category ;
 			productInfo.form = req.body.form ;
 			productInfo.ingredients = req.body.ingredients ;
-			productInfo.site = siteInfo._id ;
+			productInfo.siteId = siteInfo._id ;
 			console.log(productInfo);
 
-			
+			Product.count({siteId : req.body.site}, function(err, count){
+
+				if(err) return next(err);
+				console.log(count + 1, productInfo);
+				if(!count) productInfo.order = 1;
+				else productInfo.order =  count + 1;
+
+				productInfo.save(function(err){
+					if(err) return next(err);
+					res.json({message: 'product created!'});
+				});
+
+			});
+
+			/* you can get the productInfo variable from parent scope
 			Product.count({siteId : req.body.site }, function(err, count){
 				console.log("xxxx", count, productInfo);	// no count value!!!
 
@@ -203,12 +217,12 @@ module.exports = function(app, passport) {
 					res.json({message: 'product created!'});
 				});
 			}(productInfo));
-			
+			*/
 		});
 
 	});
 
-	app.put('/product-api/products/:productId', function(req, res){
+	app.put('/product-api/products/:productId', function(req, res, next){
 
 		Product.findById(req.params.productId, function(err, productInfo){
 			if (err) return next(err);
@@ -230,6 +244,18 @@ module.exports = function(app, passport) {
 		});
 
 	});
+
+
+	// test functions: for count test
+	/*
+	app.get('/test_count/:siteId', function(req, res, next){
+		Product.count({siteId: req.params.siteId}, function(err, count){
+			if(err) return next(err);
+			return res.json({message: count});
+		});
+	});
+	*/
+
 };
 
 // route middleware to make sure
