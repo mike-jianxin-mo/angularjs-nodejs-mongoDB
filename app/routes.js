@@ -3,6 +3,7 @@ var urlConfig= require('./urlConfig');
 var Site     = require('./models/site');
 var Section  = require('./models/section');
 var Product  = require('./models/product');
+var Photo    = require('./models/photo');
 
 module.exports = function(app, passport) {
 
@@ -245,6 +246,55 @@ module.exports = function(app, passport) {
 
 	});
 
+	app.delete('/product-api/products/:productId', function(req, res, next){
+		Product.findById(req.params.productId, function(err, product){
+			if(!err) return next(err);
+			product.remove(function(err){
+				if(!err) return next(err);
+				return res.json({message: 'product deleted!'});
+			}); 
+		});
+	});
+
+	// change the product order
+	app.setOrder('/product-api/products/order/', function(req, res, next){
+
+	});
+
+	// photos CRUD functions
+	// get all photos
+	app.get('/product-api/photos', function(req, res, next){
+		Photo.find({}, function(err, photos){
+			if(!err) return next(err);
+			return res.json(photos);
+		});	
+	});
+
+	// get product photos
+	app.get('/product-api/products/:productId/photos', function(req, res, next){
+		Photo.find({productId: req.params.productId}, function(err, photos){
+			if(!err) return next(err);
+			return res.json(photos);
+		});	
+	});
+
+	// upload photos
+
+
+	// delete photos
+	app.delete('/product-api/photos/:photoId', function(req, res, next){
+		Photo.findById(req.params.photoId, function(err, photo){
+			if(!err) return next(err);
+			photo.remove(function(err){
+				if(!err) return next(err);
+				return res.json({message: 'photo deleted!'});
+			});
+		});
+	});
+
+	// set default photos
+
+
 
 	// test functions: for count test
 	/*
@@ -267,4 +317,6 @@ function isLoggedIn(req, res, next) {
 
 	// if they aren't redirect them to the home page
 	res.redirect('/');
-}
+};
+
+

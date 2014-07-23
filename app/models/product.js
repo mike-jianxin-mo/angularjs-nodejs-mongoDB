@@ -16,6 +16,7 @@ var productSchema = mongoose.Schema({
 	
 });
 
+// for active virtual id field
 productSchema.set('toJSON', { getters: true });
 
 

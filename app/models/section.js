@@ -11,6 +11,7 @@ var sectionSchema = mongoose.Schema({
 	siteId : String,	
 });
 
+// for active virtual id field
 sectionSchema.set('toJSON', { getters: true });
 
 
